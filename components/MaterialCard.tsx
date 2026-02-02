@@ -1,6 +1,6 @@
 import React from 'react';
 import { Material, Category } from '../types';
-import { ExternalLink, FileText, Target, Crosshair, Calendar, Bookmark, CalendarRange, ClipboardCheck, ArrowRight } from 'lucide-react';
+import { ExternalLink, Target, Crosshair, Calendar, Bookmark, CalendarRange, ClipboardCheck, Sparkles } from 'lucide-react';
 
 interface MaterialCardProps {
   material: Material;
@@ -9,109 +9,88 @@ interface MaterialCardProps {
 const MaterialCard: React.FC<MaterialCardProps> = ({ material }) => {
   const getCategoryTheme = (category: Category) => {
     switch (category) {
-      case Category.RPP:
-        return {
-          icon: <FileText className="w-5 h-5" />,
-          bg: 'bg-blue-900',
-          text: 'text-blue-200',
-          accent: 'text-blue-600',
-          border: 'border-blue-900',
-          badge: 'bg-blue-700',
-          hoverShadow: 'group-hover:shadow-blue-900/20'
-        };
       case Category.CP:
         return {
-          icon: <Target className="w-5 h-5" />,
-          bg: 'bg-purple-900',
-          text: 'text-purple-200',
-          accent: 'text-purple-600',
-          border: 'border-purple-900',
-          badge: 'bg-purple-700',
-          hoverShadow: 'group-hover:shadow-purple-900/20'
+          icon: <Target className="w-4 h-4" />,
+          bg: 'bg-purple-100',
+          text: 'text-purple-800',
+          border: 'border-purple-200',
+          badge: 'bg-purple-600'
         };
       case Category.TP:
         return {
-          icon: <Crosshair className="w-5 h-5" />,
-          bg: 'bg-orange-900',
-          text: 'text-orange-200',
-          accent: 'text-orange-600',
-          border: 'border-orange-900',
-          badge: 'bg-orange-700',
-          hoverShadow: 'group-hover:shadow-orange-900/20'
+          icon: <Crosshair className="w-4 h-4" />,
+          bg: 'bg-orange-100',
+          text: 'text-orange-800',
+          border: 'border-orange-200',
+          badge: 'bg-orange-600'
         };
       case Category.RPPM:
         return {
-          icon: <CalendarRange className="w-5 h-5" />,
-          bg: 'bg-indigo-900',
-          text: 'text-indigo-200',
-          accent: 'text-indigo-600',
-          border: 'border-indigo-900',
-          badge: 'bg-indigo-700',
-          hoverShadow: 'group-hover:shadow-indigo-900/20'
+          icon: <CalendarRange className="w-4 h-4" />,
+          bg: 'bg-emerald-100',
+          text: 'text-emerald-800',
+          border: 'border-emerald-200',
+          badge: 'bg-emerald-600'
         };
       case Category.PENILAIAN:
         return {
-          icon: <ClipboardCheck className="w-5 h-5" />,
-          bg: 'bg-rose-900',
-          text: 'text-rose-200',
-          accent: 'text-rose-600',
-          border: 'border-rose-900',
-          badge: 'bg-rose-700',
-          hoverShadow: 'group-hover:shadow-rose-900/20'
+          icon: <ClipboardCheck className="w-4 h-4" />,
+          bg: 'bg-rose-100',
+          text: 'text-rose-800',
+          border: 'border-rose-200',
+          badge: 'bg-rose-600'
         };
       default:
         return {
-          icon: <Bookmark className="w-5 h-5" />,
-          bg: 'bg-slate-800',
-          text: 'text-slate-300',
-          accent: 'text-slate-600',
-          border: 'border-slate-800',
-          badge: 'bg-slate-600',
-          hoverShadow: 'group-hover:shadow-slate-900/20'
+          icon: <Bookmark className="w-4 h-4" />,
+          bg: 'bg-slate-100',
+          text: 'text-slate-800',
+          border: 'border-slate-200',
+          badge: 'bg-slate-600'
         };
     }
   };
 
   const theme = getCategoryTheme(material.category);
+  const isAiTool = material.subCategory === 'AI TOOLS';
 
   return (
-    <div className={`
-      group bg-white rounded-none border-b-[6px] ${theme.border} 
-      shadow-lg hover:shadow-2xl ${theme.hoverShadow}
-      hover:-translate-y-2 transition-all duration-300 
-      flex flex-col h-full relative overflow-hidden
-    `}>
+    <div className={`group bg-white rounded-xl border-2 ${theme.border} shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden relative`}>
       
-      {/* Decorative Header Bar */}
-      <div className={`h-2 w-full ${theme.bg}`}></div>
-
-      <div className="p-6 flex-1 flex flex-col">
-        {/* Top Meta */}
-        <div className="flex justify-between items-start mb-4">
-          <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded bg-slate-100 ${theme.text} font-bold text-xs uppercase tracking-wider`}>
-             <span className={`${theme.accent}`}>{theme.icon}</span>
-             <span className="text-slate-700">{material.category}</span>
-          </div>
-          
-          {material.subCategory && (
-            <span className={`inline-flex items-center px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white ${theme.badge} shadow-sm transform skew-x-[-10deg]`}>
-              <span className="skew-x-[10deg]">{material.subCategory}</span>
+      {/* Top Banner Tag */}
+      <div className="absolute top-0 right-0 p-3 z-10">
+         {material.subCategory && (
+            <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-white shadow-sm ${isAiTool ? 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-pulse' : theme.badge}`}>
+              {isAiTool && <Sparkles className="w-3 h-3" />}
+              {material.subCategory}
             </span>
-          )}
+         )}
+      </div>
+
+      <div className="p-5 flex-1 flex flex-col pt-10">
+        {/* Category Label */}
+        <div className="flex items-center gap-2 mb-3">
+           <div className={`p-1.5 rounded-md ${theme.bg} ${theme.text}`}>
+             {theme.icon}
+           </div>
+           <span className={`text-xs font-bold uppercase tracking-wide ${theme.text}`}>
+             {material.category}
+           </span>
         </div>
 
         {/* Content Section */}
-        <h3 className="text-xl font-black text-slate-800 mb-3 leading-tight group-hover:text-orange-600 transition-colors uppercase">
+        <h3 className="text-lg font-bold text-slate-800 mb-2 leading-tight group-hover:text-sky-700 transition-colors">
           {material.title}
         </h3>
-        <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1 font-medium border-l-2 border-slate-200 pl-4">
+        <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-1">
           {material.description}
         </p>
 
-        {/* Footer Action */}
-        <div className="mt-auto pt-5 border-t-2 border-slate-100 flex items-center justify-between">
-          <span className="flex items-center text-xs text-slate-400 font-bold uppercase tracking-wider">
-            <Calendar className="w-3.5 h-3.5 mr-1.5 text-slate-300" />
+        {/* Meta & Action */}
+        <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+          <span className="flex items-center text-xs text-slate-400 font-medium">
+            <Calendar className="w-3.5 h-3.5 mr-1" />
             {new Date(material.dateAdded).toLocaleDateString('id-ID', { year: 'numeric', month: 'short' })}
           </span>
           
@@ -119,14 +98,10 @@ const MaterialCard: React.FC<MaterialCardProps> = ({ material }) => {
             href={material.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`
-              flex items-center gap-2 text-xs font-black uppercase tracking-widest px-4 py-2 
-              bg-slate-900 text-white hover:bg-orange-600 transition-colors
-              group-hover:pr-2
-            `}
+            className={`flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-lg transition-colors ${isAiTool ? 'bg-sky-600 text-white hover:bg-sky-700' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
           >
-            BUKA
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            {isAiTool ? 'Buka Aplikasi' : 'Buka Materi'}
+            <ExternalLink className="w-3 h-3" />
           </a>
         </div>
       </div>

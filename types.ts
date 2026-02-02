@@ -1,9 +1,8 @@
 export enum Category {
-  RPP = 'RPP',
-  CP = 'Capaian Pembelajaran',
-  TP = 'Tujuan Pembelajaran',
-  RPPM = 'RPPM (Mingguan)',
-  PENILAIAN = 'Penilaian & Asesmen'
+  RPPM = 'RPPM',
+  CP = 'CP',
+  TP = 'TP',
+  PENILAIAN = 'Penilaian'
 }
 
 export interface Material {
@@ -11,7 +10,7 @@ export interface Material {
   title: string;
   description: string;
   category: Category;
-  subCategory?: string; // For "Kelas 1", "Fase A", etc.
+  subCategory?: string; // Added for better organization (e.g., Kelas 1, AI Tools)
   url: string;
   thumbnailUrl?: string;
   dateAdded: string;

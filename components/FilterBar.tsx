@@ -1,6 +1,6 @@
 import React from 'react';
 import { FilterType, Category } from '../types';
-import { LayoutGrid, FileText, Target, Crosshair, CalendarRange, ClipboardCheck } from 'lucide-react';
+import { LayoutGrid, Target, Crosshair, CalendarRange, ClipboardCheck } from 'lucide-react';
 
 interface FilterBarProps {
   currentFilter: FilterType;
@@ -10,18 +10,17 @@ interface FilterBarProps {
 
 const FilterBar: React.FC<FilterBarProps> = ({ currentFilter, onFilterChange, counts }) => {
   const filters: { type: FilterType; label: string; icon: React.ReactNode }[] = [
-    { type: 'ALL', label: 'SEMUA MATERI', icon: <LayoutGrid className="w-4 h-4" /> },
-    { type: Category.RPP, label: 'RPP', icon: <FileText className="w-4 h-4" /> },
-    { type: Category.RPPM, label: 'RPPM (MINGGUAN)', icon: <CalendarRange className="w-4 h-4" /> },
+    { type: 'ALL', label: 'Semua', icon: <LayoutGrid className="w-4 h-4" /> },
+    { type: Category.RPPM, label: 'RPPM', icon: <CalendarRange className="w-4 h-4" /> },
     { type: Category.CP, label: 'CP', icon: <Target className="w-4 h-4" /> },
     { type: Category.TP, label: 'TP', icon: <Crosshair className="w-4 h-4" /> },
-    { type: Category.PENILAIAN, label: 'PENILAIAN', icon: <ClipboardCheck className="w-4 h-4" /> },
+    { type: Category.PENILAIAN, label: 'Penilaian', icon: <ClipboardCheck className="w-4 h-4" /> },
   ];
 
   return (
-    <div className="w-full bg-slate-900 border-b border-slate-700 sticky top-0 md:top-32 z-40 shadow-xl overflow-x-auto transition-all">
+    <div className="w-full bg-white border-b border-sky-100 sticky top-0 md:top-28 z-40 shadow-sm overflow-x-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex flex-nowrap md:flex-wrap items-center gap-3 min-w-max md:min-w-0 justify-center">
+        <div className="flex flex-nowrap md:flex-wrap items-center gap-3 min-w-max md:min-w-0">
           {filters.map((filter) => {
             const isActive = currentFilter === filter.type;
             return (
@@ -29,23 +28,21 @@ const FilterBar: React.FC<FilterBarProps> = ({ currentFilter, onFilterChange, co
                 key={filter.type}
                 onClick={() => onFilterChange(filter.type)}
                 className={`
-                  relative flex items-center gap-2 px-5 py-2.5 rounded-none skew-x-[-10deg] text-xs sm:text-sm font-black transition-all duration-200 ease-in-out uppercase tracking-wider whitespace-nowrap border-2
+                  relative flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all duration-200 ease-in-out uppercase tracking-wide whitespace-nowrap
                   ${isActive 
-                    ? 'bg-orange-600 border-orange-500 text-white shadow-[0_0_15px_rgba(234,88,12,0.5)] scale-105 z-10' 
-                    : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700 hover:text-white hover:border-slate-500'
+                    ? 'bg-sky-600 text-white shadow-lg shadow-sky-500/30 transform -translate-y-0.5' 
+                    : 'bg-slate-100 text-slate-600 hover:bg-sky-50 hover:text-sky-700 border border-slate-200'
                   }
                 `}
               >
-                <div className="skew-x-[10deg] flex items-center gap-2">
-                  {filter.icon}
-                  {filter.label}
-                  <span className={`
-                    ml-1.5 px-2 py-0.5 text-[10px] rounded-full font-bold
-                    ${isActive ? 'bg-black/30 text-white' : 'bg-black/20 text-slate-500'}
-                  `}>
-                    {counts[filter.type]}
-                  </span>
-                </div>
+                {filter.icon}
+                {filter.label}
+                <span className={`
+                  ml-1.5 px-2 py-0.5 text-[10px] rounded-full
+                  ${isActive ? 'bg-white/20 text-white' : 'bg-slate-300/50 text-slate-600'}
+                `}>
+                  {counts[filter.type]}
+                </span>
               </button>
             );
           })}
