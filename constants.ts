@@ -2,17 +2,34 @@ import { Category, Material } from './types';
 
 export const MATERIALS_DATA: Material[] = [
   // ==================================================================================
-  // LINK UTAMA & TOOLS (AI)
+  // CP & ATP AI TOOLS (GABUNGAN)
   // ==================================================================================
   {
-    id: 'rppm-ai-gen',
-    title: 'Aplikasi Pembuatan RPPM Otomatis (AI)',
-    description: 'Tools cerdas Generate AI untuk menyusun Rencana Pelaksanaan Pembelajaran Mingguan (RPPM) secara otomatis.',
-    category: Category.RPPM,
+    id: 'cp-atp-ai-gen',
+    title: 'Aplikasi CP & ATP Otomatis (AI)',
+    description: 'Tools cerdas Generate AI untuk menganalisis Capaian Pembelajaran (CP) dan menyusun Alur Tujuan Pembelajaran (ATP/TP) secara otomatis.',
+    category: Category.CP_ATP,
     subCategory: 'AI TOOLS',
-    url: 'https://ai.studio/apps/drive/1B6ixptfPDxyBEv9fC-QO7FeeL4g6d18f?fullscreenApplet=true',
+    url: 'https://ai.studio/apps/drive/1czxHavoTubw8-8HrCq-wAIqmPvnyhVPz?fullscreenApplet=true',
     dateAdded: '2024-02-28',
   },
+
+  // ==================================================================================
+  // RPP AI TOOL
+  // ==================================================================================
+  {
+    id: 'rpp-pjok-ai',
+    title: 'Aplikasi Pembuatan RPP PJOK (AI)',
+    description: 'Aplikasi cerdas untuk menyusun Rencana Pelaksanaan Pembelajaran (RPP) PJOK secara otomatis dan sistematis.',
+    category: Category.RPP,
+    subCategory: 'AI TOOLS',
+    url: 'https://ai.studio/apps/drive/1IKMXppTP90aMUjMwXCsBbz3dkom68Ccy?fullscreenApplet=true',
+    dateAdded: '2024-02-28',
+  },
+
+  // ==================================================================================
+  // PENILAIAN AI TOOL
+  // ==================================================================================
   {
     id: 'nilai-ai-gen',
     title: 'Aplikasi Penilaian Otomatis (AI)',
@@ -21,25 +38,5 @@ export const MATERIALS_DATA: Material[] = [
     subCategory: 'AI TOOLS',
     url: 'https://ai.studio/apps/drive/1xogj57F_oQWdjQsYR0EsQtTOJ-SZylEN',
     dateAdded: '2024-02-28',
-  },
-
-  // --- CP & TP ---
-  {
-    id: 'cp-a',
-    title: 'Capaian Pembelajaran (CP) - Fase A',
-    description: 'Dokumen CP Fase A (Kelas 1-2). Meniru gerakan, mengenali tubuh, dan kebersihan diri.',
-    category: Category.CP,
-    subCategory: 'Fase A',
-    url: '#',
-    dateAdded: '2024-01-20',
-  },
-  {
-    id: 'tp-b',
-    title: 'Alur Tujuan Pembelajaran (ATP) - Fase B',
-    description: 'Turunan tujuan pembelajaran dari CP Fase B (Kelas 3-4). Fokus kerjasama tim.',
-    category: Category.TP,
-    subCategory: 'Fase B',
-    url: '#',
-    dateAdded: '2024-01-26',
   },
 ];

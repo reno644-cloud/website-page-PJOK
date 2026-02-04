@@ -1,6 +1,6 @@
 import React from 'react';
 import { FilterType, Category } from '../types';
-import { LayoutGrid, Target, Crosshair, CalendarRange, ClipboardCheck } from 'lucide-react';
+import { LayoutGrid, ClipboardCheck, Sparkles, BookOpen } from 'lucide-react';
 
 interface FilterBarProps {
   currentFilter: FilterType;
@@ -11,9 +11,8 @@ interface FilterBarProps {
 const FilterBar: React.FC<FilterBarProps> = ({ currentFilter, onFilterChange, counts }) => {
   const filters: { type: FilterType; label: string; icon: React.ReactNode }[] = [
     { type: 'ALL', label: 'Semua', icon: <LayoutGrid className="w-4 h-4" /> },
-    { type: Category.RPPM, label: 'RPPM', icon: <CalendarRange className="w-4 h-4" /> },
-    { type: Category.CP, label: 'CP', icon: <Target className="w-4 h-4" /> },
-    { type: Category.TP, label: 'TP', icon: <Crosshair className="w-4 h-4" /> },
+    { type: Category.CP_ATP, label: 'CP & ATP', icon: <Sparkles className="w-4 h-4" /> },
+    { type: Category.RPP, label: 'RPP', icon: <BookOpen className="w-4 h-4" /> },
     { type: Category.PENILAIAN, label: 'Penilaian', icon: <ClipboardCheck className="w-4 h-4" /> },
   ];
 

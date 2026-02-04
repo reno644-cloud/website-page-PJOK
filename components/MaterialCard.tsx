@@ -1,6 +1,6 @@
 import React from 'react';
 import { Material, Category } from '../types';
-import { ExternalLink, Target, Crosshair, Calendar, Bookmark, CalendarRange, ClipboardCheck, Sparkles } from 'lucide-react';
+import { ExternalLink, Bookmark, Calendar, ClipboardCheck, Sparkles, BookOpen } from 'lucide-react';
 
 interface MaterialCardProps {
   material: Material;
@@ -9,25 +9,17 @@ interface MaterialCardProps {
 const MaterialCard: React.FC<MaterialCardProps> = ({ material }) => {
   const getCategoryTheme = (category: Category) => {
     switch (category) {
-      case Category.CP:
+      case Category.CP_ATP:
         return {
-          icon: <Target className="w-4 h-4" />,
-          bg: 'bg-purple-100',
-          text: 'text-purple-800',
-          border: 'border-purple-200',
-          badge: 'bg-purple-600'
+          icon: <Sparkles className="w-4 h-4" />,
+          bg: 'bg-violet-100',
+          text: 'text-violet-800',
+          border: 'border-violet-200',
+          badge: 'bg-violet-600'
         };
-      case Category.TP:
+      case Category.RPP:
         return {
-          icon: <Crosshair className="w-4 h-4" />,
-          bg: 'bg-orange-100',
-          text: 'text-orange-800',
-          border: 'border-orange-200',
-          badge: 'bg-orange-600'
-        };
-      case Category.RPPM:
-        return {
-          icon: <CalendarRange className="w-4 h-4" />,
+          icon: <BookOpen className="w-4 h-4" />,
           bg: 'bg-emerald-100',
           text: 'text-emerald-800',
           border: 'border-emerald-200',

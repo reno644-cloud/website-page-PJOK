@@ -1,7 +1,6 @@
 export enum Category {
-  RPPM = 'RPPM',
-  CP = 'CP',
-  TP = 'TP',
+  CP_ATP = 'CP & ATP',
+  RPP = 'RPP',
   PENILAIAN = 'Penilaian'
 }
 

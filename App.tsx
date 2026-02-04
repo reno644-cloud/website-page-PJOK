@@ -14,9 +14,8 @@ const App: React.FC = () => {
   const counts = useMemo(() => {
     const tempCounts: Record<FilterType, number> = {
       'ALL': MATERIALS_DATA.length,
-      [Category.CP]: 0,
-      [Category.TP]: 0,
-      [Category.RPPM]: 0,
+      [Category.CP_ATP]: 0,
+      [Category.RPP]: 0,
       [Category.PENILAIAN]: 0,
     };
 
@@ -98,7 +97,7 @@ const App: React.FC = () => {
               </div>
               <input
                 type="text"
-                placeholder="Cari CP, TP, atau Aplikasi..."
+                placeholder="Cari CP, ATP, atau RPP..."
                 className="block w-full pl-11 pr-4 py-4 border-4 border-white/30 rounded-2xl leading-5 bg-white/90 backdrop-blur placeholder-slate-500 focus:outline-none focus:border-orange-400 focus:ring-4 focus:ring-orange-400/20 sm:text-lg font-bold shadow-xl transition-all text-slate-800"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
