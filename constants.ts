@@ -1,5 +1,11 @@
 import { Category, Material } from './types';
 
+// ==================================================================================
+// KONFIGURASI KODE AKSES
+// Silahkan ganti 2 angka di bawah ini untuk mengubah password aplikasi
+// ==================================================================================
+export const ADMIN_ACCESS_CODE = '44'; 
+
 export const MATERIALS_DATA: Material[] = [
   // ==================================================================================
   // CP & ATP AI TOOLS (GABUNGAN)
@@ -36,7 +42,7 @@ export const MATERIALS_DATA: Material[] = [
     description: 'Aplikasi Generate AI otomatis untuk membantu pengolahan nilai dan asesmen pembelajaran PJOK.',
     category: Category.PENILAIAN,
     subCategory: 'AI TOOLS',
-    url: 'https://ai.studio/apps/drive/1xogj57F_oQWdjQsYR0EsQtTOJ-SZylEN',
+    url: 'https://ai.studio/apps/drive/1xogj57F_oQWdjQsYR0EsQtTOJ-SZylEN?fullscreenApplet=true',
     dateAdded: '2024-02-28',
   },
 ];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FilterType, Category } from '../types';
-import { LayoutGrid, ClipboardCheck, Sparkles, BookOpen } from 'lucide-react';
+import { LayoutGrid, Sparkles, BookOpen, ClipboardCheck } from 'lucide-react';
 
 interface FilterBarProps {
   currentFilter: FilterType;

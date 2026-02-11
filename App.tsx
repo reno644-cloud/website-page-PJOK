@@ -2,13 +2,17 @@ import React, { useState, useMemo } from 'react';
 import Header from './components/Header';
 import FilterBar from './components/FilterBar';
 import MaterialCard from './components/MaterialCard';
+import AccessGate from './components/AccessGate';
+import AdminSettingsModal from './components/AdminSettingsModal';
 import { MATERIALS_DATA } from './constants';
 import { FilterType, Category } from './types';
 import { Search, Info, Award } from 'lucide-react';
 
 const App: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [activeFilter, setActiveFilter] = useState<FilterType>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   // Calculate counts for badges
   const counts = useMemo(() => {
@@ -38,8 +42,20 @@ const App: React.FC = () => {
     });
   }, [activeFilter, searchQuery]);
 
+  // Render Access Gate if not authenticated
+  if (!isAuthenticated) {
+    return <AccessGate onUnlock={() => setIsAuthenticated(true)} />;
+  }
+
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-orange-400 selection:text-white relative">
+      
+      {/* Admin Settings Modal */}
+      <AdminSettingsModal 
+        isOpen={isSettingsOpen} 
+        onClose={() => setIsSettingsOpen(false)} 
+      />
+
       {/* Background Layer - Sports Field Theme */}
       <div 
         className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat bg-fixed"
@@ -56,7 +72,7 @@ const App: React.FC = () => {
 
       {/* Main Content Wrapper - Relative z-10 to sit above background */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        <Header />
+        <Header onOpenSettings={() => setIsSettingsOpen(true)} />
         
         {/* Hero / Motivation Banner */}
         <div className="bg-sky-800/50 backdrop-blur-sm text-white border-b border-white/10">

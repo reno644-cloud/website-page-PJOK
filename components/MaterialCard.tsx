@@ -1,6 +1,6 @@
 import React from 'react';
 import { Material, Category } from '../types';
-import { ExternalLink, Bookmark, Calendar, ClipboardCheck, Sparkles, BookOpen } from 'lucide-react';
+import { ExternalLink, Bookmark, Calendar, Sparkles, BookOpen, ClipboardCheck } from 'lucide-react';
 
 interface MaterialCardProps {
   material: Material;
